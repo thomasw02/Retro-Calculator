@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     var leftValString = ""
     var rightValString = ""
     var currentOperation: Operation = Operation.Empty
-    var result= ""
+    var result = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +56,8 @@ class ViewController: UIViewController {
     func processOperation(op: Operation) {
         if currentOperation != Operation.Empty {
             //Run some Math
+            
+            if runningNumber != "" {
             rightValString = runningNumber
             runningNumber = ""
             
@@ -67,7 +69,12 @@ class ViewController: UIViewController {
                 result = "\(Double(leftValString)! + Double(rightValString)!)"
             } else if currentOperation == Operation.Subtract {
                 result = "\(Double(leftValString)! - Double(rightValString)!)"
+            }
 
+            leftValString = result
+            outputLabel.text = result
+            currentOperation = op
+            }
             
             
             
@@ -80,4 +87,3 @@ class ViewController: UIViewController {
     }
     
 }
-
